@@ -1,0 +1,60 @@
+/* frontend/src/App.css */
+
+/* 1. Box-sizing Reset: 
+   This is essential. It ensures that padding and borders are included in the element's 
+   total width and height, preventing them from causing unexpected horizontal overflow.
+*/
+* {
+  box-sizing: border-box !important; /* !important to enforce against external libraries/components */
+}
+
+/* 2. Full Viewport Setup & Overflow Fix (CRITICAL)
+   This block targets the root <html> and <body> elements.
+   - margin/padding: Removes all default browser spacing.
+   - overflow-x: hidden: **This is the key fix.** Using !important to guarantee it takes effect.
+   - min-width: 100vw: Ensures the root container is at least the full viewport width.
+*/
+html {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  min-width: 100vw !important;
+  overflow-x: hidden !important; /* The most aggressive fix for horizontal scrolling */
+}
+
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  min-height: 100vh !important;
+  overflow-x: hidden !important; /* Secondary guarantee against scrolling */
+  
+  /* Setting basic styles for a clean starting point */
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: #213547;
+  background-color: #fff !important; /* Enforce white background */
+}
+
+/* 3. Root Element (`#root`) Setup
+   This ensures the main React container fills the entire viewport and overrides 
+   any default constraints from the build setup (like Vite).
+*/
+#root {
+  min-height: 100vh !important;
+  width: 100% !important;
+  max-width: none !important; /* Crucial: removes the fixed max-width/centering */
+  margin: 0 !important; 
+  padding: 0 !important;
+}
+
+/* 4. Aggressive overflow prevention for all child elements of #root */
+#root > div {
+    /* If your components are wrapping their content inside a top-level div, 
+       this ensures it respects the boundaries.
+    */
+    overflow: hidden !important;
+    width: 100% !important;
+}
