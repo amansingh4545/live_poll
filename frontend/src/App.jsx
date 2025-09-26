@@ -7,7 +7,7 @@ import StudentPollView from './components/StudentPollView';
 import './App.css';
 
 // IMPORTANT: Socket connection remains the same
-const SOCKET_SERVER_URL = "http://localhost:4000"; 
+const SOCKET_SERVER_URL = "https://live-poll-backend-rhcj.onrender.com";
 export const socket = io(SOCKET_SERVER_URL, { 
   reconnectionAttempts: 5
 }); 
